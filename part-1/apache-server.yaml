@@ -2,6 +2,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: apache-server
+  namespace: auto-scale
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -16,6 +17,6 @@ spec:
       target:
         type: Utilization
         averageUtilization: 50
-    behavior:
-      scaleDown:
-        stabilizationWindowSeconds: 300
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
